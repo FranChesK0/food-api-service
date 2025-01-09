@@ -2,7 +2,7 @@ import uvicorn
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import menu, order, places, feedback, restaurants
+from routers import menu, admin, order, places, feedback, restaurants
 
 
 def main() -> None:
@@ -15,6 +15,7 @@ def main() -> None:
         allow_headers=["*"],
     )
     app.include_router(menu.router)
+    app.include_router(admin.router)
     app.include_router(order.router)
     app.include_router(places.router)
     app.include_router(feedback.router)
