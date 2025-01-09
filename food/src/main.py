@@ -20,7 +20,7 @@ def main() -> None:
     app.include_router(feedback.router)
     app.include_router(restaurants.router)
 
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000)
 
 
 if __name__ == "__main__":
