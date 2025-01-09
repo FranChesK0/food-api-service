@@ -9,6 +9,12 @@ packages = [{ "include" = "src", from = "food" }]
 
 [tool.poetry.dependencies]
 python = "^3.12"
+fastapi = "^0.115.6"
+uvicorn = "^0.34.0"
+pydantic = "^2.10.4"
+pydantic-settings = "^2.7.1"
+sqlalchemy = "^2.0.36"
+aiosqlite = "^0.20.0"
 
 
 [tool.poetry.group.dev]
