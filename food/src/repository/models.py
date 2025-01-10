@@ -32,7 +32,7 @@ class Schedule(Model):
     _repr_columns_number = 5
 
     restaurant_id: Mapped[int] = mapped_column(
-        ForeignKey("restaurant.id"), nullable=False
+        ForeignKey("restaurants.id"), nullable=False
     )
     start: Mapped[str] = mapped_column(nullable=False)
     end: Mapped[str] = mapped_column(nullable=False)
@@ -66,7 +66,7 @@ class MenuItem(Model):
 
     _repr_columns_number = 5
 
-    category_id: Mapped[int] = mapped_column(ForeignKey("category.id"), nullable=False)
+    category_id: Mapped[int] = mapped_column(ForeignKey("categorys.id"), nullable=False)
     name: Mapped[str] = mapped_column(nullable=False)
     price: Mapped[float] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(nullable=False)
