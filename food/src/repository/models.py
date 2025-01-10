@@ -1,5 +1,5 @@
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, relationship, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column
 
 from .database import Model
 
@@ -37,8 +37,6 @@ class Schedule(Model):
     start: Mapped[str] = mapped_column(nullable=False)
     end: Mapped[str] = mapped_column(nullable=False)
 
-    restaurant = relationship("Restaurant", back_populates="schedules")
-
 
 class Category(Model):
     """
@@ -70,5 +68,3 @@ class MenuItem(Model):
     name: Mapped[str] = mapped_column(nullable=False)
     price: Mapped[float] = mapped_column(nullable=False)
     description: Mapped[str] = mapped_column(nullable=False)
-
-    category = relationship("Category", back_populates="menu_items")
