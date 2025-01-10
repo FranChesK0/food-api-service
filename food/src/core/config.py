@@ -9,6 +9,8 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__)).removesuffix(
 
 class Settings(BaseSettings):
     ROOT_DIR: str = ROOT_DIR
+    HOST: str = "127.0.0.1"
+    PORT: int = 8000
 
     model_config = SettingsConfigDict(env_file=f"{ROOT_DIR}/../env")
 
