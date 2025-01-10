@@ -1,12 +1,19 @@
 from fastapi import APIRouter
 
 from schemas import (
+    CategorySchema,
     ScheduleSchema,
     RestaurantSchema,
+    CategoryAddSchema,
     ScheduleAddSchema,
     RestaurantAddSchema,
 )
-from repository import SessionDep, ScheduleRepository, RestaurantRepository
+from repository import (
+    SessionDep,
+    CategoryRepository,
+    ScheduleRepository,
+    RestaurantRepository,
+)
 
 router = APIRouter(prefix="/admin", tags=["Admin"])
 
@@ -37,3 +44,17 @@ async def add_schedules(
     schedules: list[ScheduleAddSchema], session: SessionDep
 ) -> list[ScheduleSchema]:
     return await ScheduleRepository.add_many(schedules, session)
+
+
+@router.post("/category", summary="Add a new category")
+async def add_category(
+    category: CategoryAddSchema, session: SessionDep
+) -> CategorySchema:
+    return await CategoryRepository.add_one(category, session)
+
+
+@router.post("/category_many", summary="Add new categories")
+async def add_categories(
+    categories: list[CategoryAddSchema], session: SessionDep
+) -> list[CategorySchema]:
+    return await CategoryRepository.add_many(categories, session)

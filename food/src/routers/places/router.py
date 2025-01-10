@@ -10,4 +10,4 @@ router = APIRouter(prefix="/places", tags=["Places"])
 async def get_restaurant_schedule(
     restaurant_id: int, session: SessionDep
 ) -> ScheduleSchema:
-    return await ScheduleRepository.find(restaurant_id, session)
+    return await ScheduleRepository.find_by_restaurant(restaurant_id, session)

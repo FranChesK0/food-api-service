@@ -44,7 +44,21 @@ class ScheduleRepository:
 
     @classmethod
     @logger.catch
-    async def find(cls, restaurant_id: int, session: AsyncSession) -> ScheduleSchema:
+    async def find(cls, id: int, session: AsyncSession) -> ScheduleSchema:
+        logger.debug(f"Finding schedule {id}")
+        schedule_orm = await session.execute(select(Schedule).where(Schedule.id == id))
+        schedule = schedule_orm.scalars().one_or_none()
+        if schedule is None:
+            raise ValueError(f"Schedule {id} not found")
+
+        logger.info(f"Found schedule {id}")
+        return ScheduleSchema.model_validate(schedule)
+
+    @classmethod
+    @logger.catch
+    async def find_by_restaurant(
+        cls, restaurant_id: int, session: AsyncSession
+    ) -> ScheduleSchema:
         logger.debug(f"Finding schedule for {restaurant_id} restaurant")
         schedule_orm = await session.execute(
             select(Schedule).where(Schedule.restaurant_id == restaurant_id)
