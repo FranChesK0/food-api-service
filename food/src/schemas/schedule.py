@@ -1,6 +1,4 @@
-from datetime import time
-
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class ScheduleAddSchema(BaseModel):
@@ -14,8 +12,10 @@ class ScheduleAddSchema(BaseModel):
     """
 
     restaurant_id: int
-    start: time
-    end: time
+    start: str
+    end: str
+
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ScheduleSchema(ScheduleAddSchema):
@@ -30,3 +30,5 @@ class ScheduleSchema(ScheduleAddSchema):
     """
 
     id: int
+
+    model_config = ConfigDict(from_attributes=True)
