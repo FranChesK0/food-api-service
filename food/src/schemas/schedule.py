@@ -8,13 +8,15 @@ class ScheduleAddSchema(BaseModel):
     Schedule add schema.
 
     Attributes:
-        from_ (datetime): Schedule from.
-        to (datetime): Schedule to.
+        restaurant_id (int): Restaurant id.
+        start (str): Schedule from.
+        end (str): Schedule to.
         days (tuple[bool, ...]): Schedule days.
     """
 
-    from_: time
-    to: time
+    restaurant_id: int
+    start: time
+    end: time
     days: tuple[bool, ...]
 
 
@@ -24,8 +26,9 @@ class ScheduleSchema(ScheduleAddSchema):
 
     Attributes:
         id (int): Schedule id.
-        from_ (datetime): Schedule from.
-        to (datetime): Schedule to.
+        restaurant_id (int): Restaurant id.
+        start (str): Schedule from.
+        end (str): Schedule to.
         days (tuple[bool, ...]): Schedule days.
     """
 

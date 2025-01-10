@@ -7,11 +7,9 @@ class CategoryAddSchema(BaseModel):
 
     Attributes:
         name (str): Category name.
-        sort_order (int): Category sort order.
     """
 
     name: str
-    sort_order: int
 
 
 class CategorySchema(CategoryAddSchema):
@@ -21,7 +19,6 @@ class CategorySchema(CategoryAddSchema):
     Attributes:
         id (int): Category id.
         name (str): Category name.
-        sort_order (int): Category sort order.
     """
 
     id: int
