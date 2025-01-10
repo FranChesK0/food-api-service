@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import time
 
 from pydantic import BaseModel
 
@@ -13,8 +13,8 @@ class ScheduleAddSchema(BaseModel):
         days (tuple[bool, ...]): Schedule days.
     """
 
-    from_: datetime
-    to: datetime
+    from_: time
+    to: time
     days: tuple[bool, ...]
 
 
