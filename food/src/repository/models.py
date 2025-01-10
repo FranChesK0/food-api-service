@@ -27,7 +27,6 @@ class Schedule(Model):
         restaurant_id (int): Restaurant id.
         start (str): Schedule start time.
         end (str): Schedule end time.
-        days (list[bool]): Schedule days.
     """
 
     _repr_columns_number = 5
@@ -37,7 +36,6 @@ class Schedule(Model):
     )
     start: Mapped[str] = mapped_column(nullable=False)
     end: Mapped[str] = mapped_column(nullable=False)
-    days: Mapped[list[bool]] = mapped_column(nullable=False)
 
     restaurant = relationship("Restaurant", back_populates="schedules")
 
