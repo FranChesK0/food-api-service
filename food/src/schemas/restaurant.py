@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class RestaurantAddSchema(BaseModel):
@@ -13,6 +13,8 @@ class RestaurantAddSchema(BaseModel):
     title: str
     address: str
 
+    model_config = ConfigDict(from_attributes=True)
+
 
 class RestaurantSchema(RestaurantAddSchema):
     """
@@ -25,3 +27,5 @@ class RestaurantSchema(RestaurantAddSchema):
     """
 
     id: int
+
+    model_config = ConfigDict(from_attributes=True)
