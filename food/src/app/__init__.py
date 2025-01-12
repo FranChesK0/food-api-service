@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from core import settings
 
-from . import menu, admin, order, places, feedback, restaurants
+from . import menu, order, places, feedback, restaurants
 
 
 def run() -> None:
@@ -17,7 +17,7 @@ def run() -> None:
         allow_headers=["*"],
     )
     app.include_router(menu.router)
-    app.include_router(admin.router)
+    # app.include_router(admin.router)
     app.include_router(order.router)
     app.include_router(places.router)
     app.include_router(feedback.router)
