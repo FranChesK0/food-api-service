@@ -73,9 +73,3 @@ async def drop_tables() -> None:
     async with engine.begin() as connection:
         await connection.run_sync(Model.metadata.drop_all)
     logger.warning("Database tables dropped")
-
-
-async def setup_database() -> None:
-    """Setup database tables."""
-    await drop_tables()
-    await create_tables()

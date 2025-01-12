@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class MenuItemAddSchema(BaseModel):
@@ -19,6 +19,8 @@ class MenuItemAddSchema(BaseModel):
     price: float
     description: str
 
+    model_config = ConfigDict(from_attributes=True)
+
 
 class MenuItemSchema(MenuItemAddSchema):
     """
@@ -33,3 +35,5 @@ class MenuItemSchema(MenuItemAddSchema):
     """
 
     id: int
+
+    model_config = ConfigDict(from_attributes=True)

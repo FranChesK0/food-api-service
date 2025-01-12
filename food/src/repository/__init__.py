@@ -1,4 +1,5 @@
-from .database import SessionDep, setup_database
+from .setup import setup_database
+from .database import SessionDep
 from .schedule_repository import ScheduleRepository
 from .category_respository import CategoryRepository
 from .menu_item_repository import MenuItemRepository
