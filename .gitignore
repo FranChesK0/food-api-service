@@ -171,4 +171,4 @@ cython_debug/
 .pypirc
 
 # Database file
-./food/data/*.sqlite3
+./food/data/food_delivery.sqlite3
