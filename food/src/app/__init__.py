@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from core import settings
 
-from . import menu, order, places, feedback, restaurants
+from . import menu, order, places, feedback, categories, restaurants
 
 
 def run() -> None:
@@ -21,6 +21,7 @@ def run() -> None:
     app.include_router(order.router)
     app.include_router(places.router)
     app.include_router(feedback.router)
+    app.include_router(categories.router)
     app.include_router(restaurants.router)
 
     uvicorn.run(app, host=settings.HOST, port=settings.PORT)

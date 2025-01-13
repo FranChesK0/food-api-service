@@ -57,3 +57,16 @@ class MenuItemRepository:
         menu_items = menu_item_orms.scalars().all()
         logger.info(f"Found {len(menu_items)} menu items for {restaurant_id} restaurant")
         return [MenuItemSchema.model_validate(menu_item) for menu_item in menu_items]
+
+    @classmethod
+    @logger.catch
+    async def find_by_category(
+        cls, category_id: int, session: AsyncSession
+    ) -> list[MenuItemSchema]:
+        logger.debug(f"Finding menu items for {category_id} category")
+        menu_item_orms = await session.execute(
+            select(MenuItem).where(MenuItem.category_id == category_id)
+        )
+        menu_items = menu_item_orms.scalars().all()
+        logger.info(f"Found {len(menu_items)} menu items for {category_id} category")
+        return [MenuItemSchema.model_validate(menu_item) for menu_item in menu_items]

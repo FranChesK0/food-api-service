@@ -53,3 +53,12 @@ class CategoryRepository:
 
         logger.info(f"Found category {id}")
         return CategorySchema.model_validate(category)
+
+    @classmethod
+    @logger.catch
+    async def find_all(cls, session: AsyncSession) -> list[CategorySchema]:
+        logger.debug("Finding all categories")
+        category_orms = await session.execute(select(Category))
+        categories = category_orms.scalars().all()
+        logger.info(f"Found {len(categories)} categories")
+        return [CategorySchema.model_validate(category) for category in categories]
